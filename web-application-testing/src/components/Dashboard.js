@@ -10,16 +10,16 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={() => {this.props.countRules(1, 0, 0, 0)}}>
+                <button data-testid="strike-button" onClick={() => {this.props.countRules(1, 0, 0, 0)}}>
                     strike
                 </button>
-                <button onClick={() => {this.props.countRules(0, 1, 0, 0)}}>
+                <button data-testid="ball-button" onClick={() => {this.props.countRules(0, 1, 0, 0)}}>
                     ball
                 </button>
-                <button onClick={() => {this.props.countRules(0, 0, 1, 0)}}>
+                <button data-testid="foul-button" onClick={() => {this.props.countRules(0, 0, 1, 0)}}>
                     foul
                 </button>
-                <button onClick={() => {this.props.countRules(0, 0, 0, 1)}}>
+                <button data-testid="hit-button" onClick={() => {this.props.countRules(0, 0, 0, 1)}}>
                     hit
                 </button>
             </div>

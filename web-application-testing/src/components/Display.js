@@ -11,8 +11,8 @@ class Display extends React.Component {
         return (
             <div>
                 
-                <p>Balls: {this.props.player.balls}</p>
-                <p>Strikes: {this.props.player.strikes}</p>
+                <p data-testid="balls">Balls: {this.props.player.balls}</p>
+                <p data-testid="strikes">Strikes: {this.props.player.strikes}</p>
 
             </div>
         )

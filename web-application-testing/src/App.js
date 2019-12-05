@@ -9,17 +9,22 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      balls: 0,
+      balls: 0,  // -> "1"
       strikes: 0
     };
   }
+
+  // increaseStrikes = (currentStrikes) => {
+  //   return currentStrikes + 1
+  // }
 
   countRules = (isStrike, isBall, isFoul, isHit) => {
 
     // console.log(isStrike, isBall, isFoul, isHit)
     if(isStrike) {
       this.setState({strikes: this.state.strikes + 1})
-      if(this.state.strikes === 3) {
+      // test passed
+      if(this.state.strikes === 2) {
         this.setState({balls: 0, strikes: 0})
 
 
@@ -28,7 +33,7 @@ class App extends React.Component {
     }
     else if(isBall) {
       this.setState({balls: this.state.balls + 1})
-      if(this.state.balls === 4) {
+      if(this.state.balls === 3) {
         this.setState({balls: 0, strikes: 0})
   
       }
