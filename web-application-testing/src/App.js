@@ -1,26 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Dashboard from "./components/Dashboard";
+import Display from "./components/Display";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+
+  constructor() {
+    super()
+    this.state = {
+      balls: 0,
+      strikes: 0
+    };
+  }
+
+  countRules = (isStrike, isBall, isFoul, isHit) => {
+
+    // console.log(isStrike, isBall, isFoul, isHit)
+    if(isStrike) {
+      this.setState({strikes: this.state.strikes + 1})
+      if(this.state.strikes === 3) {
+        this.setState({balls: 0, strikes: 0})
+
+
+      }
+
+    }
+    else if(isBall) {
+      this.setState({balls: this.state.balls + 1})
+      if(this.state.balls === 4) {
+        this.setState({balls: 0, strikes: 0})
+  
+      }
+    }
+    else if(isHit) {
+      this.setState({balls: 0, strikes: 0})
+
+    }
+    else if(isFoul) {
+      if(this.state.strikes === 0) {
+        this.setState({strikes: 1})
+      }
+      else if(this.state.strikes === 1) {
+        this.setState({strikes: 2})
+      }
+    }
+    console.log(this.state)
+
+    
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Dashboard countRules={this.countRules}/>
+        <Display player={this.state}/>
+      </div>
+    );
+  }
+  
 }
 
 export default App;
